@@ -1,3 +1,5 @@
+import React from "react";
+
 const TaskItem = ({ task, onDelete }) => {
     return (
       <div className="flex justify-between p-3 border rounded bg-gray-100 mb-2">
