@@ -35,13 +35,10 @@ cd task-management-app
 ```sh
 cd backend
 npm install
-```
-
-Create a `.env` file in the backend folder and add:
 
 ```
 Add Your MongoDb url in /db.js
-```
+
 
 Then, start the backend server:
 
