@@ -12,24 +12,29 @@ export const addTask = async (req, res) => {
 };
 
 export const editTask = async (req, res) => {
-    const { title, status } = req.body;
+    const { title } = req.body;
   
     try {
-      const updatedTask = await Task.findByIdAndUpdate(
-        req.params.id,  // Fetch ID from params instead of body
-        { title, status },
-        { new: true }
-      );
+      const task = await Task.findById(req.params.id);
   
-      if (!updatedTask) {
+      if (!task) {
         return res.status(404).json({ message: "Task not found" });
       }
   
-      res.json(updatedTask);
+      // Toggle Status (if current status is Pending → Completed, else Pending)
+      const newStatus = task.status === "Pending" ? "Completed" : "Pending";
+  
+      // Update Task
+      task.title = title || task.title; // Update title if provided
+      task.status = newStatus;
+      await task.save();
+  
+      res.json(task);
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
   };
+  
   
 
 export const deleteTask = async (req, res) => {

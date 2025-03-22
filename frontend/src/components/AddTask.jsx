@@ -14,16 +14,20 @@ const AddTask = ({ refreshTasks }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-4">
+    <form onSubmit={handleSubmit} className="flex items-center gap-3 mb-6 bg-white p-4 rounded-lg shadow-md w-full">
       <input
         type="text"
-        className="border p-2 mr-2"
+        className="flex-grow border border-gray-300 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-blue-400"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Add Task"
+        placeholder="Enter task name..."
       />
-      
-      <button type="submit" className="bg-blue-500 text-white px-4 py-2">Add</button>
+      <button 
+        type="submit" 
+        className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2 rounded-lg transition duration-200"
+      >
+        Add Task
+      </button>
     </form>
   );
 };
