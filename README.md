@@ -26,7 +26,7 @@ This app allows users to **add, edit, delete, and mark tasks as completed or pen
 ### 1️⃣ Clone the Repository
 
 ```sh
-git clone https://github.com/your-username/task-management-app.git
+git clone https://github.com/SurajIngale/Task-Management-App-.git
 cd task-management-app
 ```
 
