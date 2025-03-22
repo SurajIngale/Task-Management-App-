@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/tasks", getTasks);
 router.post("/tasks", addTask);
-router.put("/task", editTask);
+router.put("/tasks/:id", editTask);
 router.delete("/tasks/:id", deleteTask);
 
 export default router;

@@ -12,10 +12,25 @@ export const addTask = async (req, res) => {
 };
 
 export const editTask = async (req, res) => {
-  const { id, title, status } = req.body;
-  const updatedTask = await Task.findByIdAndUpdate(id, { title, status }, { new: true });
-  res.json(updatedTask);
-};
+    const { title, status } = req.body;
+  
+    try {
+      const updatedTask = await Task.findByIdAndUpdate(
+        req.params.id,  // Fetch ID from params instead of body
+        { title, status },
+        { new: true }
+      );
+  
+      if (!updatedTask) {
+        return res.status(404).json({ message: "Task not found" });
+      }
+  
+      res.json(updatedTask);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  };
+  
 
 export const deleteTask = async (req, res) => {
   await Task.findByIdAndDelete(req.params.id);
